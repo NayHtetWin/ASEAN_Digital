@@ -1,0 +1,63 @@
+name: Sync ASEAN Opportunities
+
+on:
+  schedule:
+    # Daily fast-moving portals (Mon-Sat at 01:00 UTC)
+    - cron: "0 1 * * 1-6"
+    # Weekly full sync including programmatic portals (Sun at 01:00 UTC)
+    - cron: "0 1 * * 0"
+  workflow_dispatch:
+    inputs:
+      schedule:
+        description: "Schedule mode (daily, weekly, or all)"
+        required: false
+        default: "all"
+        type: choice
+        options:
+          - all
+          - daily
+          - weekly
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Run unit tests
+        run: go test -v ./...
+
+      - name: Determine schedule flag
+        id: sched
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "mode=${{ inputs.schedule }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "0 1 * * 0" ]; then
+            echo "mode=all" >> "$GITHUB_OUTPUT"
+          else
+            echo "mode=daily" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Sync grants & RFPs
+        run: go run main.go -schedule "${{ steps.sched.outputs.mode }}"
+
+      - name: Commit updated data files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/grants.json data/grants.csv data/grants.js
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore(data): sync ASEAN opportunities (${{ steps.sched.outputs.mode }})"
+            git push
+          fi

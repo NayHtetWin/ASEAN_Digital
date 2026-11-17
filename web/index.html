@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASEAN Digital Economy &amp; Workforce Grant / RFP Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: "class" };
+    (function () {
+      const stored = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const isDark = stored ? stored === "dark" : prefersDark;
+      document.documentElement.classList.toggle("dark", isDark);
+      document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+    })();
+  </script>
+  <script src="../data/grants.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased min-h-screen transition-colors">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Header -->
+    <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+      <div>
+        <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-700 bg-blue-50 border border-blue-200 dark:text-blue-300 dark:bg-blue-950/60 dark:border-blue-800/80 px-2.5 py-1 rounded-full mb-2">
+          ASEAN Regional Intelligence
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50">
+          ASEAN Digital Economy &amp; Workforce Tracker
+        </h1>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+          Centralized discovery, qualification, and deadline tracking for DEFA, DPI, TVET, and ICT opportunities.
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center gap-3">
+        <button
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+          class="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 dark:text-slate-200 dark:bg-slate-800 dark:border-slate-700 dark:hover:bg-slate-700 transition-colors shadow-sm"
+        >
+          <span id="theme-toggle-icon" aria-hidden="true"></span>
+          <span id="theme-toggle-label">Dark</span>
+        </button>
+        <a
+          href="../data/grants.csv"
+          download="grants.csv"
+          class="inline-flex items-center gap-1.5 px-3.5 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 dark:text-slate-200 dark:bg-slate-800 dark:border-slate-700 dark:hover:bg-slate-700 transition-colors shadow-sm"
+        >
+          Export CSV
+        </a>
+        <button
+          id="open-manual-modal"
+          type="button"
+          data-issue-template="add_opportunity.yml"
+          class="inline-flex items-center gap-1.5 px-3.5 py-2 text-sm font-medium text-white bg-slate-900 rounded-lg hover:bg-slate-800 dark:bg-blue-600 dark:hover:bg-blue-500 transition-colors shadow-sm"
+        >
+          + Add Manual Opportunity
+        </button>
+      </div>
+    </header>
+
+    <!-- Executive KPI Ribbon (4 Cards) -->
+    <section aria-label="Key Metrics" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
+        <p class="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400">Total Active Opportunities</p>
+        <p id="kpi-active" class="text-3xl font-bold text-slate-900 dark:text-slate-50 mt-2">0</p>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Non-expired calls</p>
+      </div>
+
+      <div class="bg-amber-50/70 dark:bg-amber-950/30 rounded-xl border border-amber-200 dark:border-amber-800/60 p-5 shadow-sm">
+        <p class="text-xs font-medium uppercase tracking-wider text-amber-800 dark:text-amber-300">Closing Soon (&le; 7 Days)</p>
+        <p id="kpi-closing" class="text-3xl font-bold text-red-700 dark:text-red-400 mt-2">0</p>
+        <p class="text-xs text-amber-700 dark:text-amber-400/90 mt-1">Immediate Go/No-Go priority</p>
+      </div>
+
+      <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
+        <p class="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400">Grants / CFPs</p>
+        <p id="kpi-grants" class="text-3xl font-bold text-blue-700 dark:text-blue-400 mt-2">0</p>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Active grant &amp; fellowship calls</p>
+      </div>
+
+      <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
+        <p class="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400">Tenders / RFPs</p>
+        <p id="kpi-rfps" class="text-3xl font-bold text-purple-700 dark:text-purple-400 mt-2">0</p>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Active procurement &amp; ToRs</p>
+      </div>
+    </section>
+
+    <!-- Interactive Filter & Search Bar -->
+    <section aria-label="Filters" class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm mb-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3">
+        <div class="sm:col-span-2 lg:col-span-4">
+          <label for="search-input" class="sr-only">Search by title or source</label>
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Search by opportunity title or source..."
+            class="w-full px-3.5 py-2 text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:bg-slate-800"
+          />
+        </div>
+
+        <div class="lg:col-span-2">
+          <label for="category-filter" class="sr-only">Category</label>
+          <select
+            id="category-filter"
+            class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100"
+          >
+            <option value="All">All Categories</option>
+            <option value="Grant">Grant</option>
+            <option value="RFP/Tender">RFP/Tender</option>
+          </select>
+        </div>
+
+        <div class="lg:col-span-2">
+          <label for="theme-filter" class="sr-only">Theme</label>
+          <select
+            id="theme-filter"
+            class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100"
+          >
+            <option value="All">All Themes</option>
+            <option value="AI">AI</option>
+            <option value="Climate">Climate</option>
+            <option value="Environment">Environment</option>
+            <option value="Digital Economy">Digital Economy / DEFA</option>
+            <option value="Workforce">Workforce / TVET</option>
+            <option value="ICT">ICT / Rapid Assessment</option>
+            <option value="MSME">MSME</option>
+          </select>
+        </div>
+
+        <div class="lg:col-span-2">
+          <label for="source-filter" class="sr-only">Source</label>
+          <select
+            id="source-filter"
+            class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100"
+          >
+            <option value="All">All Sources</option>
+          </select>
+        </div>
+
+        <div class="lg:col-span-2">
+          <label for="status-filter" class="sr-only">Status</label>
+          <select
+            id="status-filter"
+            class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100"
+          >
+            <option value="Active Only">Active Only</option>
+            <option value="Closing Soon">Closing Soon</option>
+            <option value="Open">Open</option>
+            <option value="Expired">Expired</option>
+            <option value="All">All Statuses</option>
+          </select>
+        </div>
+
+        <div class="lg:col-span-3">
+          <label for="stage-filter" class="sr-only">Pipeline Stage</label>
+          <select
+            id="stage-filter"
+            class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100"
+          >
+            <option value="All">All Stages</option>
+            <option value="1-Triage">1-Triage</option>
+            <option value="2-Go/No-Go">2-Go/No-Go</option>
+            <option value="3-Partnering">3-Partnering</option>
+            <option value="4-Drafting">4-Drafting</option>
+            <option value="5-Submitted">5-Submitted</option>
+            <option value="6-Awarded/Expired">6-Awarded/Expired</option>
+          </select>
+        </div>
+
+        <div class="lg:col-span-3">
+          <label for="sort-select" class="sr-only">Sort order</label>
+          <select
+            id="sort-select"
+            class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100"
+          >
+            <option value="deadline-asc">Sort: Soonest Deadline</option>
+            <option value="deadline-desc">Sort: Latest Deadline</option>
+            <option value="open-desc">Sort: Newest Added</option>
+            <option value="open-asc">Sort: Oldest Added</option>
+            <option value="title-asc">Sort: Title (A &rarr; Z)</option>
+            <option value="source-asc">Sort: Source (A &rarr; Z)</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data Table / Board -->
+    <section aria-label="Opportunities" class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+      <div class="px-5 py-3.5 border-b border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 dark:text-slate-400">
+        <span id="results-count">Showing 0 opportunities</span>
+        <div class="inline-flex rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-0.5">
+          <button id="view-table-btn" type="button" class="px-2.5 py-1 rounded-md font-medium bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-slate-100">Table</button>
+          <button id="view-board-btn" type="button" class="px-2.5 py-1 rounded-md font-medium text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100">Board</button>
+        </div>
+      </div>
+
+      <div id="table-view" class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-slate-200 dark:divide-slate-800 text-sm">
+          <thead class="bg-slate-50 dark:bg-slate-800/60 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+            <tr>
+              <th scope="col" class="px-5 py-3 text-left">
+                <button type="button" data-sort-col="title" class="inline-flex items-center gap-1 hover:text-slate-900 dark:hover:text-slate-100">Opportunity <span class="sort-ind"></span></button>
+              </th>
+              <th scope="col" class="px-4 py-3 text-left">Category</th>
+              <th scope="col" class="px-4 py-3 text-left">
+                <button type="button" data-sort-col="source" class="inline-flex items-center gap-1 hover:text-slate-900 dark:hover:text-slate-100">Source <span class="sort-ind"></span></button>
+              </th>
+              <th scope="col" class="px-4 py-3 text-left whitespace-nowrap">
+                <button type="button" data-sort-col="open" class="inline-flex items-center gap-1 hover:text-slate-900 dark:hover:text-slate-100">Open Date <span class="sort-ind"></span></button>
+              </th>
+              <th scope="col" class="px-4 py-3 text-left whitespace-nowrap">
+                <button type="button" data-sort-col="deadline" class="inline-flex items-center gap-1 hover:text-slate-900 dark:hover:text-slate-100">Close Date <span class="sort-ind"></span></button>
+              </th>
+              <th scope="col" class="px-4 py-3 text-left whitespace-nowrap">Status</th>
+              <th scope="col" class="px-5 py-3 text-right">Action</th>
+            </tr>
+          </thead>
+          <tbody id="table-body" class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900"></tbody>
+        </table>
+      </div>
+
+      <div id="board-view" class="hidden p-4 bg-slate-50/60 dark:bg-slate-950/50 overflow-x-auto">
+        <div id="board-columns" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-3 min-w-[900px]"></div>
+      </div>
+
+      <div id="empty-state" class="hidden py-12 px-6 text-center">
+        <p class="text-sm font-medium text-slate-700 dark:text-slate-200">No matching opportunities found.</p>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Try adjusting your search query or status filter.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Manual Entry Modal -->
+  <dialog id="manual-modal" class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 p-0 shadow-xl max-w-lg w-full backdrop:bg-slate-900/40 dark:backdrop:bg-slate-950/75">
+    <div class="p-6">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-base font-semibold text-slate-900 dark:text-slate-100">Log Manual Opportunity</h2>
+        <button id="close-manual-modal" type="button" class="text-slate-400 hover:text-slate-700 dark:text-slate-500 dark:hover:text-slate-200 text-lg leading-none">&times;</button>
+      </div>
+      <p class="text-xs text-slate-600 dark:text-slate-300 mb-3">
+        For login-walled portals (e.g., DFAT AusConnect), append an entry under <code class="bg-slate-100 dark:bg-slate-800 dark:text-slate-200 px-1 py-0.5 rounded">manual_entries</code> in <code class="bg-slate-100 dark:bg-slate-800 dark:text-slate-200 px-1 py-0.5 rounded">config.yaml</code> and re-run <code class="bg-slate-100 dark:bg-slate-800 dark:text-slate-200 px-1 py-0.5 rounded">go run main.go -schedule all</code>:
+      </p>
+      <pre class="bg-slate-900 dark:bg-slate-950 dark:border dark:border-slate-800 text-slate-100 text-xs rounded-lg p-3 overflow-x-auto">  - title: "Opportunity Title"
+    type: "RFP/Tender" # or "Grant"
+    source: "DFAT AusConnect"
+    open_date: "2026-11-17"
+    close_date: "2026-12-01" # or "TBD"
+    url: "https://example.org/call"</pre>
+    </div>
+  </dialog>
+
+  <script>
+    (function () {
+      let allRecords = [];
+      let currentView = "table";
+      const STAGES = ["1-Triage", "2-Go/No-Go", "3-Partnering", "4-Drafting", "5-Submitted", "6-Awarded/Expired"];
+
+      const searchInput = document.getElementById("search-input");
+      const categoryFilter = document.getElementById("category-filter");
+      const themeFilter = document.getElementById("theme-filter");
+      const sourceFilter = document.getElementById("source-filter");
+      const statusFilter = document.getElementById("status-filter");
+      const stageFilter = document.getElementById("stage-filter");
+      const sortSelect = document.getElementById("sort-select");
+      const tableView = document.getElementById("table-view");
+      const boardView = document.getElementById("board-view");
+      const boardColumns = document.getElementById("board-columns");
+      const viewTableBtn = document.getElementById("view-table-btn");
+      const viewBoardBtn = document.getElementById("view-board-btn");
+      const tableBody = document.getElementById("table-body");
+      const emptyState = document.getElementById("empty-state");
+      const resultsCount = document.getElementById("results-count");
+      const manualModal = document.getElementById("manual-modal");
+      const themeToggleBtn = document.getElementById("theme-toggle");
+      const themeToggleIcon = document.getElementById("theme-toggle-icon");
+      const themeToggleLabel = document.getElementById("theme-toggle-label");
+
+      const SUN_ICON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path d="M10 2a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 2zM10 15a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 15zM10 7a3 3 0 100 6 3 3 0 000-6zM15.657 5.404a.75.75 0 10-1.06-1.06l-1.061 1.06a.75.75 0 001.06 1.06l1.06-1.06zM6.464 14.596a.75.75 0 10-1.06-1.06l-1.06 1.06a.75.75 0 001.06 1.06l1.06-1.06zM18 10a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0118 10zM5 10a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 015 10zM14.596 15.657a.75.75 0 001.06-1.06l-1.06-1.061a.75.75 0 10-1.06 1.06l1.06 1.06zM5.404 6.464a.75.75 0 001.06-1.06l-1.06-1.06a.75.75 0 10-1.061 1.06l1.06 1.06z"/></svg>';
+      const MOON_ICON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M7.455 2.004a.75.75 0 01.26.77 7 7 0 009.958 7.967.75.75 0 011.067.853A8.5 8.5 0 116.647 1.921a.75.75 0 01.808.083z" clip-rule="evenodd"/></svg>';
+
+      function applyTheme(isDark) {
+        document.documentElement.classList.toggle("dark", isDark);
+        document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+        themeToggleBtn.setAttribute("aria-pressed", String(isDark));
+        themeToggleIcon.innerHTML = isDark ? SUN_ICON : MOON_ICON;
+        themeToggleLabel.textContent = isDark ? "Light" : "Dark";
+      }
+
+      applyTheme(document.documentElement.classList.contains("dark"));
+
+      themeToggleBtn.addEventListener("click", () => {
+        const nextDark = !document.documentElement.classList.contains("dark");
+        localStorage.setItem("theme", nextDark ? "dark" : "light");
+        applyTheme(nextDark);
+      });
+
+      if (window.matchMedia) {
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+          if (!localStorage.getItem("theme")) {
+            applyTheme(e.matches);
+          }
+        });
+      }
+
+      function escapeHTML(str) {
+        return String(str ?? "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function statusBadgeClass(status) {
+        const s = String(status || "");
+        if (s.startsWith("Closing Soon")) {
+          return "bg-red-50 text-red-700 border border-red-200 dark:bg-red-950/60 dark:text-red-300 dark:border-red-800/80";
+        }
+        if (s.startsWith("Open")) {
+          return "bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-800/80";
+        }
+        return "bg-slate-100 text-slate-600 border border-slate-200 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-700";
+      }
+
+      function typeBadgeClass(type) {
+        if (type === "RFP/Tender") {
+          return "bg-purple-50 text-purple-700 border border-purple-200 dark:bg-purple-950/60 dark:text-purple-300 dark:border-purple-800/80";
+        }
+        return "bg-blue-50 text-blue-700 border border-blue-200 dark:bg-blue-950/60 dark:text-blue-300 dark:border-blue-800/80";
+      }
+
+      function updateKPIs(records) {
+        const active = records.filter((r) => r.deadline_status !== "Expired");
+        const closingSoon = active.filter((r) => String(r.deadline_status).startsWith("Closing Soon"));
+        const grants = active.filter((r) => r.type === "Grant");
+        const rfps = active.filter((r) => r.type === "RFP/Tender");
+
+        document.getElementById("kpi-active").textContent = active.length;
+        document.getElementById("kpi-closing").textContent = closingSoon.length;
+        document.getElementById("kpi-grants").textContent = grants.length;
+        document.getElementById("kpi-rfps").textContent = rfps.length;
+      }
+
+      function matchesStatus(rec, filterVal) {
+        const st = String(rec.deadline_status || "");
+        switch (filterVal) {
+          case "Active Only":
+            return st !== "Expired";
+          case "Closing Soon":
+            return st.startsWith("Closing Soon");
+          case "Open":
+            return st.startsWith("Open");
+          case "Expired":
+            return st === "Expired";
+          default:
+            return true;
+        }
+      }
+
+      const THEME_PATTERNS = {
+        "AI": /\b(ai|artificial intelligence|ai governance|machine learning|llm)\b/i,
+        "Climate": /\b(climate|green|carbon|net zero|decarbonization|mitigation|adaptation)\b/i,
+        "Environment": /\b(environment|environmental|sustainability|sustainable|biodiversity|clean energy|water)\b/i,
+        "Digital Economy": /\b(digital economy|defa|digital transformation|e-government|digital public infrastructure|dpi|data governance)\b/i,
+        "Workforce": /\b(workforce|tvet|upskilling|reskilling|future of work|labor market|skills)\b/i,
+        "ICT": /\b(ict|rapid assessment|cyber|broadband|connectivity)\b/i,
+        "MSME": /\b(msme|msmes|sme|smes|small business)\b/i
+      };
+
+      function matchesTheme(rec, themeVal) {
+        if (themeVal === "All") return true;
+        const re = THEME_PATTERNS[themeVal];
+        if (!re) return true;
+        const text = [rec.title, rec.source, rec.themes, rec.tags].filter(Boolean).join(" ");
+        return re.test(text);
+      }
+
+      function populateSourceFilter(records) {
+        const sources = Array.from(new Set(records.map((r) => String(r.source || "").trim()).filter(Boolean))).sort((a, b) => a.localeCompare(b));
+        sourceFilter.innerHTML = '<option value="All">All Sources</option>' + sources.map((s) => `<option value="${escapeHTML(s)}">${escapeHTML(s)}</option>`).join("");
+      }
+
+      function sortRecords(list, mode) {
+        const copy = list.slice();
+        const cmpDateAsc = (aVal, bVal, fallbackCompare) => {
+          const aTBD = !aVal || aVal === "TBD";
+          const bTBD = !bVal || bVal === "TBD";
+          if (aTBD && bTBD) return fallbackCompare();
+          if (aTBD) return 1;
+          if (bTBD) return -1;
+          return String(aVal).localeCompare(String(bVal));
+        };
+
+        switch (mode) {
+          case "deadline-desc":
+            copy.sort((a, b) => {
+              const aTBD = !a.close_date || a.close_date === "TBD";
+              const bTBD = !b.close_date || b.close_date === "TBD";
+              if (aTBD && bTBD) return String(b.open_date || "").localeCompare(String(a.open_date || ""));
+              if (aTBD) return 1;
+              if (bTBD) return -1;
+              return String(b.close_date).localeCompare(String(a.close_date));
+            });
+            break;
+          case "open-desc":
+            copy.sort((a, b) => String(b.open_date || "").localeCompare(String(a.open_date || "")));
+            break;
+          case "open-asc":
+            copy.sort((a, b) => String(a.open_date || "").localeCompare(String(b.open_date || "")));
+            break;
+          case "title-asc":
+            copy.sort((a, b) => String(a.title || "").localeCompare(String(b.title || "")));
+            break;
+          case "source-asc":
+            copy.sort((a, b) => String(a.source || "").localeCompare(String(b.source || "")));
+            break;
+          case "deadline-asc":
+          default:
+            copy.sort((a, b) => cmpDateAsc(a.close_date, b.close_date, () => String(b.open_date || "").localeCompare(String(a.open_date || ""))));
+            break;
+        }
+        return copy;
+      }
+
+      function updateSortIndicators(mode) {
+        const map = {
+          "deadline-asc": ["deadline", "↑"],
+          "deadline-desc": ["deadline", "↓"],
+          "open-desc": ["open", "↓"],
+          "open-asc": ["open", "↑"],
+          "title-asc": ["title", "↑"],
+          "source-asc": ["source", "↑"]
+        };
+        const [activeCol, arrow] = map[mode] || ["", ""];
+        document.querySelectorAll("th button[data-sort-col]").forEach((btn) => {
+          const ind = btn.querySelector(".sort-ind");
+          if (ind) ind.textContent = btn.dataset.sortCol === activeCol ? arrow : "";
+        });
+      }
+
+      function render() {
+        const q = searchInput.value.trim().toLowerCase();
+        const cat = categoryFilter.value;
+        const theme = themeFilter.value;
+        const src = sourceFilter.value;
+        const st = statusFilter.value;
+        const stage = stageFilter.value;
+        const sortMode = sortSelect.value;
+
+        updateSortIndicators(sortMode);
+
+        const filtered = allRecords.filter((rec) => {
+          if (q) {
+            const hay = (String(rec.title || "") + " " + String(rec.source || "")).toLowerCase();
+            if (!hay.includes(q)) return false;
+          }
+          if (cat !== "All" && rec.type !== cat) return false;
+          if (!matchesTheme(rec, theme)) return false;
+          if (src !== "All" && String(rec.source || "") !== src) return false;
+          if (!matchesStatus(rec, st)) return false;
+          if (stage !== "All" && (rec.pipeline_stage || "1-Triage") !== stage) return false;
+          return true;
+        });
+
+        const sorted = sortRecords(filtered, sortMode);
+        resultsCount.textContent = `Showing ${sorted.length} of ${allRecords.length} opportunities`;
+
+        if (sorted.length === 0 && currentView === "table") {
+          tableBody.innerHTML = "";
+          emptyState.classList.remove("hidden");
+          return;
+        }
+        emptyState.classList.add("hidden");
+
+        if (currentView === "board") {
+          tableView.classList.add("hidden");
+          boardView.classList.remove("hidden");
+          boardColumns.innerHTML = STAGES.map((s) => {
+            const items = sorted.filter((r) => (r.pipeline_stage || "1-Triage") === s);
+            const cards = items.map((rec) => `
+              <div class="bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700/80 p-3 shadow-sm">
+                <div class="flex items-center justify-between gap-1 mb-1.5">
+                  <span class="px-2 py-0.5 rounded-full text-[11px] font-medium ${typeBadgeClass(rec.type)}">${escapeHTML(rec.type)}</span>
+                  <span class="px-2 py-0.5 rounded-full text-[11px] font-medium ${statusBadgeClass(rec.deadline_status)}">${escapeHTML(rec.deadline_status)}</span>
+                </div>
+                <div class="text-xs font-semibold text-slate-900 dark:text-slate-100 leading-snug mb-1">${escapeHTML(rec.title)}</div>
+                <div class="text-[11px] text-slate-500 dark:text-slate-400 mb-2">${escapeHTML(rec.source)} &middot; ${escapeHTML(rec.close_date || "TBD")}</div>
+                <a href="${escapeHTML(rec.url || "#")}" target="_blank" rel="noopener noreferrer" class="text-[11px] font-medium text-blue-700 dark:text-blue-400 hover:underline">View Call &nearr;</a>
+              </div>
+            `).join("");
+            return `
+              <div class="bg-slate-100/80 dark:bg-slate-800/60 rounded-lg p-2.5 border border-slate-200/80 dark:border-slate-700/80">
+                <div class="flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-200 mb-2 px-1">
+                  <span>${escapeHTML(s)}</span>
+                  <span class="bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 px-1.5 py-0.5 rounded text-[11px]">${items.length}</span>
+                </div>
+                <div class="space-y-2">${cards || '<p class="text-[11px] text-slate-400 dark:text-slate-500 px-1">Empty</p>'}</div>
+              </div>
+            `;
+          }).join("");
+          return;
+        }
+
+        boardView.classList.add("hidden");
+        tableView.classList.remove("hidden");
+
+        tableBody.innerHTML = sorted
+          .map((rec) => {
+            const title = escapeHTML(rec.title);
+            const source = escapeHTML(rec.source);
+            const type = escapeHTML(rec.type);
+            const openDate = escapeHTML(rec.open_date || "—");
+            const closeDate = escapeHTML(rec.close_date || "TBD");
+            const status = escapeHTML(rec.deadline_status || "Open (TBD)");
+            const stage = escapeHTML(rec.pipeline_stage || "1-Triage");
+            const url = escapeHTML(rec.url || "#");
+
+            return `
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/50 transition-colors">
+                <td class="px-5 py-3.5 max-w-md">
+                  <div class="font-medium text-slate-900 dark:text-slate-100 leading-snug">${title}</div>
+                  <div class="text-xs text-slate-400 dark:text-slate-500 mt-0.5">${stage}</div>
+                </td>
+                <td class="px-4 py-3.5 whitespace-nowrap">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${typeBadgeClass(rec.type)}">
+                    ${type}
+                  </span>
+                </td>
+                <td class="px-4 py-3.5 text-slate-600 dark:text-slate-400 whitespace-nowrap">${source}</td>
+                <td class="px-4 py-3.5 text-slate-600 dark:text-slate-400 tabular-nums whitespace-nowrap">${openDate}</td>
+                <td class="px-4 py-3.5 font-medium text-slate-800 dark:text-slate-200 tabular-nums whitespace-nowrap">${closeDate}</td>
+                <td class="px-4 py-3.5 whitespace-nowrap">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${statusBadgeClass(rec.deadline_status)}">
+                    ${status}
+                  </span>
+                </td>
+                <td class="px-5 py-3.5 text-right whitespace-nowrap">
+                  <a
+                    href="${url}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-blue-700 bg-blue-50 hover:bg-blue-100 dark:text-blue-300 dark:bg-blue-950/60 dark:hover:bg-blue-900/60 rounded-md transition-colors"
+                  >
+                    View Call &nearr;
+                  </a>
+                </td>
+              </tr>
+            `;
+          })
+          .join("");
+      }
+
+      async function init() {
+        if (Array.isArray(window.GRANTS_DATA)) {
+          allRecords = window.GRANTS_DATA;
+        } else {
+          try {
+            const resp = await fetch("../data/grants.json");
+            if (resp.ok) {
+              allRecords = await resp.json();
+            }
+          } catch (err) {
+            console.warn("Could not load ../data/grants.json:", err);
+          }
+        }
+        populateSourceFilter(allRecords);
+        updateKPIs(allRecords);
+        render();
+      }
+
+      searchInput.addEventListener("input", render);
+      categoryFilter.addEventListener("change", render);
+      themeFilter.addEventListener("change", render);
+      sourceFilter.addEventListener("change", render);
+      statusFilter.addEventListener("change", render);
+      stageFilter.addEventListener("change", render);
+      sortSelect.addEventListener("change", render);
+
+      document.querySelectorAll("th button[data-sort-col]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const col = btn.dataset.sortCol;
+          const cur = sortSelect.value;
+          if (col === "deadline") {
+            sortSelect.value = cur === "deadline-asc" ? "deadline-desc" : "deadline-asc";
+          } else if (col === "open") {
+            sortSelect.value = cur === "open-desc" ? "open-asc" : "open-desc";
+          } else if (col === "title") {
+            sortSelect.value = "title-asc";
+          } else if (col === "source") {
+            sortSelect.value = "source-asc";
+          }
+          render();
+        });
+      });
+
+      const ACTIVE_VIEW_BTN_CLASS = "px-2.5 py-1 rounded-md font-medium bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-slate-100";
+      const INACTIVE_VIEW_BTN_CLASS = "px-2.5 py-1 rounded-md font-medium text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100";
+
+      viewTableBtn.addEventListener("click", () => {
+        currentView = "table";
+        viewTableBtn.className = ACTIVE_VIEW_BTN_CLASS;
+        viewBoardBtn.className = INACTIVE_VIEW_BTN_CLASS;
+        render();
+      });
+      viewBoardBtn.addEventListener("click", () => {
+        currentView = "board";
+        viewBoardBtn.className = ACTIVE_VIEW_BTN_CLASS;
+        viewTableBtn.className = INACTIVE_VIEW_BTN_CLASS;
+        render();
+      });
+      document.getElementById("open-manual-modal").addEventListener("click", () => manualModal.showModal());
+      document.getElementById("close-manual-modal").addEventListener("click", () => manualModal.close());
+      manualModal.addEventListener("click", (e) => {
+        if (e.target === manualModal) manualModal.close();
+      });
+
+      init();
+    })();
+  </script>
+</body>
+</html>

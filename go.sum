@@ -1,0 +1,15 @@
+github.com/PuerkitoBio/goquery v1.14.0 h1:kfHPaR71dOh6TD4SS4g2bjN1MTYx8nUdLzb1xcJbiTU=
+github.com/PuerkitoBio/goquery v1.14.0/go.mod h1:XUxFiysSccNd2XFo0qKyhEzGlshiP21eN+7JgWvXWQc=
+github.com/andybalholm/cascadia v1.3.5 h1:RLjq12WJy58dN6eCIQrz0bAGZkztHWsEPFxP53Y7Ms8=
+github.com/andybalholm/cascadia v1.3.5/go.mod h1:BLRmbRjpEtNKieZOCCvYj4RqN+KRA41GBe/5O+G93kM=
+github.com/mmcdole/gofeed v1.5.0 h1:g5uott2G5jDZmB38VHJzlIuvDIBQMurteRgGLpBd3SY=
+github.com/mmcdole/gofeed v1.5.0/go.mod h1:4TUghKpTQu+4onv8FU6e0tf6JW3jRy/5VkLGwF75yfg=
+github.com/mmcdole/goxpp/v2 v2.0.0 h1:HrSCflxerUEqZQNq3u7ldtmE/XkwnTx4Zpq2DW4i5rQ=
+github.com/mmcdole/goxpp/v2 v2.0.0/go.mod h1:CUduYMnO9JB6Z/uqDn9Ormk/r8E9BsLQxHPWDZ961Os=
+golang.org/x/net v0.62.0 h1:18ELalfM5+XNRwzM2nYqXsZQ9ByS1uhj2O/U7+5jqRY=
+golang.org/x/net v0.62.0/go.mod h1:WgDCOTH8iwtB66T4/GfI94AHo/hhdb7Hah9NDseQfiI=
+golang.org/x/text v0.43.0 h1:1QivrlhwAsnMOcqgOdl9my7s9OyZl8O5/UGUTJVXoWc=
+golang.org/x/text v0.43.0/go.mod h1:hbSIYA/amXcRXTFSZqh8tWHEoqRvvbKPJ2uz/KU+a+s=
+gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
+gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
+gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=

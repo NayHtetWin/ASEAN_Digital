@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asean-digital-tracker.local/schemas/opportunity.schema.json",
+  "title": "Opportunity",
+  "description": "Strict data contract for an ASEAN Digital Economy & Workforce Grant/RFP opportunity record stored in data/grants.json and data/grants.csv.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "title",
+    "source",
+    "open_date",
+    "close_date",
+    "pipeline_stage",
+    "deadline_status",
+    "url"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "10-character lowercase MD5 hash prefix of the canonical opportunity URL.",
+      "pattern": "^[a-f0-9]{10}$",
+      "minLength": 10,
+      "maxLength": 10
+    },
+    "type": {
+      "type": "string",
+      "description": "Classification of the opportunity.",
+      "enum": [
+        "Grant / CFP",
+        "Tender / RFP",
+        "Opportunity"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "description": "Human-readable title of the grant, CFP, tender, or RFP.",
+      "minLength": 1
+    },
+    "source": {
+      "type": "string",
+      "description": "Donor, portal, or publisher name (e.g., DFAT AusConnect, ASEAN Foundation).",
+      "minLength": 1
+    },
+    "open_date": {
+      "type": "string",
+      "description": "Publication or opening date in YYYY-MM-DD format.",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "close_date": {
+      "type": "string",
+      "description": "Submission deadline in YYYY-MM-DD format, or 'TBD' when unspecified.",
+      "pattern": "^(\\d{4}-\\d{2}-\\d{2}|TBD)$"
+    },
+    "pipeline_stage": {
+      "type": "string",
+      "description": "Current proposal tracking stage.",
+      "enum": [
+        "1-Triage",
+        "2-Go/No-Go",
+        "3-Partnering",
+        "4-Drafting",
+        "5-Submitted",
+        "6-Awarded/Expired"
+      ]
+    },
+    "deadline_status": {
+      "type": "string",
+      "description": "Computed deadline countdown status recalculated on every pipeline run.",
+      "pattern": "^((Open|Closing Soon) \\(\\d+d left\\)|Expired)$"
+    },
+    "url": {
+      "type": "string",
+      "description": "Canonical URL for the opportunity announcement or portal page.",
+      "format": "uri",
+      "pattern": "^https?://.+"
+    }
+  }
+}
