@@ -129,6 +129,11 @@ func main() {
 	if err := writeOutputs(dataDir, merged); err != nil {
 		log.Fatalf("failed to write outputs: %v", err)
 	}
+	if info, err := os.Stat("docs"); err == nil && info.IsDir() {
+		if err := writeOutputs(filepath.Join("docs", dataDir), merged); err != nil {
+			log.Fatalf("failed to write docs/data outputs: %v", err)
+		}
+	}
 	log.Printf("sync complete (%s): %d total opportunities saved to %s/", sched, len(merged), dataDir)
 }
 

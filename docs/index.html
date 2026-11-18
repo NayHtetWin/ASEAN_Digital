@@ -15,7 +15,7 @@
       document.documentElement.style.colorScheme = isDark ? "dark" : "light";
     })();
   </script>
-  <script src="../data/grants.js"></script>
+  <script src="./data/grants.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased min-h-screen transition-colors">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -44,7 +44,8 @@
           <span id="theme-toggle-label">Dark</span>
         </button>
         <a
-          href="../data/grants.csv"
+          id="export-csv-link"
+          href="./data/grants.csv"
           download="grants.csv"
           class="inline-flex items-center gap-1.5 px-3.5 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 dark:text-slate-200 dark:bg-slate-800 dark:border-slate-700 dark:hover:bg-slate-700 transition-colors shadow-sm"
         >
@@ -676,13 +677,16 @@
         if (Array.isArray(window.GRANTS_DATA)) {
           allRecords = window.GRANTS_DATA;
         } else {
-          try {
-            const resp = await fetch("../data/grants.json");
-            if (resp.ok) {
-              allRecords = await resp.json();
+          for (const candidate of ["./data/grants.json", "../data/grants.json"]) {
+            try {
+              const resp = await fetch(candidate);
+              if (resp.ok) {
+                allRecords = await resp.json();
+                break;
+              }
+            } catch (err) {
+              console.warn(`Could not load ${candidate}:`, err);
             }
-          } catch (err) {
-            console.warn("Could not load ../data/grants.json:", err);
           }
         }
         populateSourceFilter(allRecords);
