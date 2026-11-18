@@ -71,6 +71,7 @@ type ManualEntry struct {
 	OpenDate  string `yaml:"open_date"`
 	CloseDate string `yaml:"close_date"`
 	URL       string `yaml:"url"`
+	Summary   string `yaml:"summary"`
 }
 
 // Opportunity is the canonical record persisted to grants.json, grants.csv, and grants.js.
@@ -84,6 +85,7 @@ type Opportunity struct {
 	PipelineStage  string `json:"pipeline_stage"`
 	DeadlineStatus string `json:"deadline_status"`
 	URL            string `json:"url"`
+	Summary        string `json:"summary,omitempty"`
 }
 
 var dateRegex = regexp.MustCompile(`(\d{4}-\d{2}-\d{2}|\d{1,2}/\d{1,2}/\d{4}|[A-Za-z]{3,9}\s+\d{1,2},\s+\d{4}|\d{1,2}\s+[A-Za-z]{3,9}\s+\d{4})`)
@@ -264,6 +266,7 @@ func parseRSS(r io.Reader, src SourceConfig, cfg *Config, now time.Time) ([]Oppo
 			PipelineStage:  "1-Triage",
 			DeadlineStatus: computeDeadlineStatus(closeDate, now),
 			URL:            link,
+			Summary:        cleanSummary(item.Description, 280),
 		})
 	}
 	return out, nil
@@ -475,6 +478,21 @@ func computeDeadlineStatus(closeDate string, now time.Time) string {
 	}
 }
 
+var htmlTagRegex = regexp.MustCompile(`<[^>]*>`)
+
+func cleanSummary(raw string, maxLen int) string {
+	stripped := htmlTagRegex.ReplaceAllString(raw, " ")
+	collapsed := strings.Join(strings.Fields(stripped), " ")
+	if collapsed == "" || maxLen <= 0 {
+		return collapsed
+	}
+	runes := []rune(collapsed)
+	if len(runes) <= maxLen {
+		return collapsed
+	}
+	return strings.TrimSpace(string(runes[:maxLen-1])) + "…"
+}
+
 func hashID(rawURL string) string {
 	sum := md5.Sum([]byte(strings.TrimSpace(rawURL)))
 	return fmt.Sprintf("%x", sum)[:10]
@@ -534,6 +552,7 @@ func mergeAndRefresh(existing, scraped []Opportunity, manuals []ManualEntry, now
 			CloseDate:     closeDate,
 			PipelineStage: stage,
 			URL:           strings.TrimSpace(m.URL),
+			Summary:       cleanSummary(m.Summary, 280),
 		}
 	}
 

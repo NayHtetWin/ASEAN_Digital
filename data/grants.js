@@ -1,5 +1,27 @@
 window.GRANTS_DATA = [
   {
+    "id": "9736ca4cc4",
+    "type": "RFP/Tender",
+    "title": "Administration TA for 4 years",
+    "source": "World Bank Procurement Notices",
+    "open_date": "2026-11-18",
+    "close_date": "2026-11-30",
+    "pipeline_stage": "1-Triage",
+    "deadline_status": "Open (12d left)",
+    "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00481308"
+  },
+  {
+    "id": "982de37184",
+    "type": "RFP/Tender",
+    "title": "Project management TA for 4 years",
+    "source": "World Bank Procurement Notices",
+    "open_date": "2026-11-18",
+    "close_date": "2026-11-30",
+    "pipeline_stage": "1-Triage",
+    "deadline_status": "Open (12d left)",
+    "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00481306"
+  },
+  {
     "id": "011ac73036",
     "type": "RFP/Tender",
     "title": "National Technical Assistant (QV)",
@@ -29,7 +51,7 @@ window.GRANTS_DATA = [
     "open_date": "2026-11-17",
     "close_date": "2026-12-03",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (16d left)",
+    "deadline_status": "Open (15d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00478592"
   },
   {
@@ -172,7 +194,7 @@ window.GRANTS_DATA = [
     "open_date": "2026-11-17",
     "close_date": "2026-12-10",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (23d left)",
+    "deadline_status": "Open (22d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00477720"
   },
   {
@@ -194,7 +216,7 @@ window.GRANTS_DATA = [
     "open_date": "2026-11-17",
     "close_date": "2027-01-04",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (48d left)",
+    "deadline_status": "Open (47d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00477184"
   },
   {
@@ -341,15 +363,15 @@ window.GRANTS_DATA = [
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00463694"
   },
   {
-    "id": "540c0af4ba",
+    "id": "1ea5fb0e9f",
     "type": "RFP/Tender",
     "title": "DFAT AusConnect Request for Proposal: Rapid Assessment of the ICT Eco-system",
     "source": "DFAT AusConnect",
     "open_date": "2026-11-01",
     "close_date": "2026-11-26",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (9d left)",
-    "url": "https://ausconnect.dfat.gov.au/"
+    "deadline_status": "Open (8d left)",
+    "url": "https://ausconnect.dfat.gov.au/opportunities?keyword=Rapid+Assessment+of+the+ICT"
   },
   {
     "id": "f538b3acd6",

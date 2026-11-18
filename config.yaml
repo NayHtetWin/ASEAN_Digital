@@ -421,4 +421,5 @@ manual_entries:
     source: "DFAT AusConnect"
     open_date: "2026-11-01"
     close_date: "2026-11-26"
-    url: "https://ausconnect.dfat.gov.au/"
+    url: "https://ausconnect.dfat.gov.au/opportunities?keyword=Rapid+Assessment+of+the+ICT"
+    summary: "DFAT AusConnect Request for Proposal to conduct a rapid assessment of the ICT ecosystem, covering digital infrastructure, systems review, information management, and digital transformation readiness."
