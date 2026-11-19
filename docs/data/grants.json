@@ -7,7 +7,7 @@
     "open_date": "2026-11-18",
     "close_date": "2026-11-30",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (12d left)",
+    "deadline_status": "Open (11d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00481308"
   },
   {
@@ -18,7 +18,7 @@
     "open_date": "2026-11-18",
     "close_date": "2026-11-30",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (12d left)",
+    "deadline_status": "Open (11d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00481306"
   },
   {
@@ -51,7 +51,7 @@
     "open_date": "2026-11-17",
     "close_date": "2026-12-03",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (15d left)",
+    "deadline_status": "Open (14d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00478592"
   },
   {
@@ -194,7 +194,7 @@
     "open_date": "2026-11-17",
     "close_date": "2026-12-10",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (22d left)",
+    "deadline_status": "Open (21d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00477720"
   },
   {
@@ -216,7 +216,7 @@
     "open_date": "2026-11-17",
     "close_date": "2027-01-04",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (47d left)",
+    "deadline_status": "Open (46d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00477184"
   },
   {
@@ -370,7 +370,7 @@
     "open_date": "2026-11-01",
     "close_date": "2026-11-26",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (8d left)",
+    "deadline_status": "Closing Soon (7d left)",
     "url": "https://ausconnect.dfat.gov.au/opportunities?keyword=Rapid+Assessment+of+the+ICT",
     "summary": "DFAT AusConnect Request for Proposal to conduct a rapid assessment of the ICT ecosystem, covering digital infrastructure, systems review, information management, and digital transformation readiness."
   },
