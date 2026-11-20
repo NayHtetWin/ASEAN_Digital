@@ -7,7 +7,7 @@
     "open_date": "2026-11-18",
     "close_date": "2026-11-30",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (11d left)",
+    "deadline_status": "Open (10d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00481308"
   },
   {
@@ -18,7 +18,7 @@
     "open_date": "2026-11-18",
     "close_date": "2026-11-30",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (11d left)",
+    "deadline_status": "Open (10d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00481306"
   },
   {
@@ -51,7 +51,7 @@
     "open_date": "2026-11-17",
     "close_date": "2026-12-03",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (14d left)",
+    "deadline_status": "Open (13d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00478592"
   },
   {
@@ -194,7 +194,7 @@
     "open_date": "2026-11-17",
     "close_date": "2026-12-10",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (21d left)",
+    "deadline_status": "Open (20d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00477720"
   },
   {
@@ -216,7 +216,7 @@
     "open_date": "2026-11-17",
     "close_date": "2027-01-04",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (46d left)",
+    "deadline_status": "Open (45d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00477184"
   },
   {
@@ -370,7 +370,7 @@
     "open_date": "2026-11-01",
     "close_date": "2026-11-26",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Closing Soon (7d left)",
+    "deadline_status": "Closing Soon (6d left)",
     "url": "https://ausconnect.dfat.gov.au/opportunities?keyword=Rapid+Assessment+of+the+ICT",
     "summary": "DFAT AusConnect Request for Proposal to conduct a rapid assessment of the ICT ecosystem, covering digital infrastructure, systems review, information management, and digital transformation readiness."
   },
@@ -396,6 +396,18 @@
     "pipeline_stage": "1-Triage",
     "deadline_status": "Open (TBD)",
     "url": "https://astnet.asean.org/2026/04/02/deadline-extended-call-for-applications-the-4th-china-asean-innovation-and-entrepreneurship-competition-caiec-2026/"
+  },
+  {
+    "id": "bbfa749d24",
+    "type": "RFP/Tender",
+    "title": "CMC opens design consulting tender for hyperscale data center project in Ho Chi Minh City - Data Center Dynamics",
+    "source": "Google News – SEA Digital Transformation Tenders",
+    "open_date": "2026-03-10",
+    "close_date": "TBD",
+    "pipeline_stage": "1-Triage",
+    "deadline_status": "Open (TBD)",
+    "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOZm50eEhvMlZMUk02QWlBY3ZWTHFFczNQdUg0enIxNU1FS1V5ejdpd1hCdUVyQ3ZxZVZfU3h4RzNYdkkxQVh2YnFJeGowZjUtSzZyMVBzUUJ0dzFoNHZsd1NBOTJfM2xTdWFDQVFWbU9TSmpJSWRVU2tvU2x5Zjdobnp5SlpDMXdKM3ZzRjhwUW1oSEdLbl90YUFDZlA1LUR4Z0FULThKZG9INWlDY0RmWmNWSDJwNUZVUEtaY3NYUlRLX1dUVE1vMk95T19YbUh5YU01U1FITUs?oc=5",
+    "summary": "CMC opens design consulting tender for hyperscale data center project in Ho Chi Minh City \u0026nbsp;\u0026nbsp; Data Center Dynamics"
   },
   {
     "id": "79abe80394",
