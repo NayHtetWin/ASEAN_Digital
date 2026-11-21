@@ -7,7 +7,7 @@
     "open_date": "2026-11-18",
     "close_date": "2026-11-30",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (10d left)",
+    "deadline_status": "Open (9d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00481308"
   },
   {
@@ -18,7 +18,7 @@
     "open_date": "2026-11-18",
     "close_date": "2026-11-30",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (10d left)",
+    "deadline_status": "Open (9d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00481306"
   },
   {
@@ -51,7 +51,7 @@
     "open_date": "2026-11-17",
     "close_date": "2026-12-03",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (13d left)",
+    "deadline_status": "Open (12d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00478592"
   },
   {
@@ -194,7 +194,7 @@
     "open_date": "2026-11-17",
     "close_date": "2026-12-10",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (20d left)",
+    "deadline_status": "Open (19d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00477720"
   },
   {
@@ -216,7 +216,7 @@
     "open_date": "2026-11-17",
     "close_date": "2027-01-04",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (45d left)",
+    "deadline_status": "Open (44d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00477184"
   },
   {
@@ -370,7 +370,7 @@
     "open_date": "2026-11-01",
     "close_date": "2026-11-26",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Closing Soon (6d left)",
+    "deadline_status": "Closing Soon (5d left)",
     "url": "https://ausconnect.dfat.gov.au/opportunities?keyword=Rapid+Assessment+of+the+ICT",
     "summary": "DFAT AusConnect Request for Proposal to conduct a rapid assessment of the ICT ecosystem, covering digital infrastructure, systems review, information management, and digital transformation readiness."
   },
@@ -410,6 +410,18 @@
     "summary": "CMC opens design consulting tender for hyperscale data center project in Ho Chi Minh City \u0026nbsp;\u0026nbsp; Data Center Dynamics"
   },
   {
+    "id": "a1744b516b",
+    "type": "Grant",
+    "title": "A Sample Grant Proposal on “AI-Enabled Disease Surveillance Systems in Southeast Asia (Indonesia, Malaysia, Philippines)” - fundsforNGOs",
+    "source": "Google News – ASEAN AI Grants",
+    "open_date": "2026-02-06",
+    "close_date": "TBD",
+    "pipeline_stage": "1-Triage",
+    "deadline_status": "Open (TBD)",
+    "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxOWXQ0ZXg5emdaTkIwaUVwc2Z2d0UxTWhWTm5tNUhRdVVJbHhhTmRmZFJBUm5jWGxnVENMMGswZGwwZVdyUElXczV6Y2kxSEdsaUNFYjJZanhTdl9DRFBId2RoNkY2Wk9TYWozeFRXM01JSHlETk1WRXpNQjdfVWhMMHJHR1lqRzc5ZE10WElhaHVaakpDSjZTXzdJNUlZcFF1b0lFeGd1RDRkaWFwZVJnSnhzMUthNUZ4Z1U0dk9fMV9fUDB6MTdQNFpuOG5jMXJ3R1VVTjMtWnFjWThIQTBmX0hjWkhkc09DMW9KY2d5cnQ?oc=5",
+    "summary": "A Sample Grant Proposal on “AI-Enabled Disease Surveillance Systems in Southeast Asia (Indonesia, Malaysia, Philippines)” \u0026nbsp;\u0026nbsp; fundsforNGOs"
+  },
+  {
     "id": "79abe80394",
     "type": "Grant",
     "title": "Entries open for AI Ready Asean Youth Challenge - fundsforNGOs - Grants and Resources for Sustainability",
@@ -420,5 +432,17 @@
     "deadline_status": "Open (TBD)",
     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQU2s2YXBHQXdGbDdpZ3EyMmJBX2hnNWItUUxOWFlCN2ZSUksySUNkMlcxcDEwWEZaeHFGeVZVMmhyeG8xMWI4TV8yMnlONmVNMG95dTdFVkh6UnVMMEpaUWhsU1dUNHI1TDZ0UDBRSXNQZHdLVEJuZ1VZY0daemlJZWdRZkEyeDVYdm9oanFBeFBFRml4NHFFeVYxS3U4VTFHS1HSAacBQVVfeXFMTkZrUjlUcE9pcUE5OWdsZU5yZXBqUkNzaVl6VWNsZFpLMFZUcE9PSk4zSFJ0S3UyOGZQYWRtYVZHMllnYzlMa3ZEVWx5N2xsWXNBLVVFZ19abHNYNnZRaXVjRTktUTVjUjh5S3REbGRieWxSS1Bxb3dyOEhzdHVoZmhpWDZqaW41TDVzd1g0YzJpc1FieGNhMTJPZ3BmZzVpd2pWU0xyQmc?oc=5",
     "summary": "Entries open for AI Ready Asean Youth Challenge \u0026nbsp;\u0026nbsp; fundsforNGOs - Grants and Resources for Sustainability"
+  },
+  {
+    "id": "d08daba7c8",
+    "type": "Grant",
+    "title": "The 1st Call: Japan－Singapore Joint Call for Proposals on \"AI\" - 科学技術振興機構（JST）",
+    "source": "Google News – ASEAN AI Grants",
+    "open_date": "2025-12-18",
+    "close_date": "TBD",
+    "pipeline_stage": "1-Triage",
+    "deadline_status": "Open (TBD)",
+    "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE8wTUwtWnB2M1R3elB1Q0hSM181Z2RFelVQR2RSRF9LcUVLd3QyT1VXWVNQbWZwU1ozY1A0allGWFZ0eVowbkFUV2xzbjBCZGdYU0JsT3dYUU1oWXlJV0RkSDYxSHVZb05iaWpIMFAxTWJvOVhqMHZfSDBB?oc=5",
+    "summary": "The 1st Call: Japan－Singapore Joint Call for Proposals on \"AI\" \u0026nbsp;\u0026nbsp; 科学技術振興機構（JST）"
   }
 ]
