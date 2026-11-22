@@ -1,5 +1,29 @@
 window.GRANTS_DATA = [
   {
+    "id": "c42948fbf8",
+    "type": "RFP/Tender",
+    "title": "Secretary-General of ASEAN Meets with President of the Federation of Pakistan Chambers of Commerce and Industry",
+    "source": "ASEAN Secretariat",
+    "open_date": "2026-11-20",
+    "close_date": "2026-11-20",
+    "pipeline_stage": "6-Awarded/Expired",
+    "deadline_status": "Expired",
+    "url": "https://asean.org/secretary-general-of-asean-meets-with-president-of-the-federation-of-pakistan-chambers-of-commerce-and-industry/",
+    "summary": "Secretary-General of ASEAN, Dr. Kao Kim Hourn, on 20 November 2026, met with Mr. Atif Ikram Sheikh, President of the Federation of Pakistan Chambers of Commerce and Industry (FPCCI), during his Working Visit to Pakistan. The Meeting exchanged views on strengthening ASEAN–Pakista…"
+  },
+  {
+    "id": "7e5cf3271c",
+    "type": "RFP/Tender",
+    "title": "ASEAN and Germany Hold First Joint Sectoral Cooperation Committee Meeting",
+    "source": "ASEAN Secretariat",
+    "open_date": "2026-11-19",
+    "close_date": "2026-11-19",
+    "pipeline_stage": "6-Awarded/Expired",
+    "deadline_status": "Expired",
+    "url": "https://asean.org/asean-and-germany-hold-first-joint-sectoral-cooperation-committee-meeting/",
+    "summary": "Jakarta, 19 November 2026 – ASEAN and Germany convened their First Joint Sectoral Cooperation Committee (AG-JSCC) Meeting today at the ASEAN Headquarters/ASEAN Secretariat, marking a new phase in their relations following the conferment of Sectoral Dialogue Partner status on Ger…"
+  },
+  {
     "id": "9736ca4cc4",
     "type": "RFP/Tender",
     "title": "Administration TA for 4 years",
@@ -7,7 +31,7 @@ window.GRANTS_DATA = [
     "open_date": "2026-11-18",
     "close_date": "2026-11-30",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (9d left)",
+    "deadline_status": "Open (8d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00481308"
   },
   {
@@ -18,7 +42,7 @@ window.GRANTS_DATA = [
     "open_date": "2026-11-18",
     "close_date": "2026-11-30",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (9d left)",
+    "deadline_status": "Open (8d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00481306"
   },
   {
@@ -51,7 +75,7 @@ window.GRANTS_DATA = [
     "open_date": "2026-11-17",
     "close_date": "2026-12-03",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (12d left)",
+    "deadline_status": "Open (11d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00478592"
   },
   {
@@ -194,7 +218,7 @@ window.GRANTS_DATA = [
     "open_date": "2026-11-17",
     "close_date": "2026-12-10",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (19d left)",
+    "deadline_status": "Open (18d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00477720"
   },
   {
@@ -216,7 +240,7 @@ window.GRANTS_DATA = [
     "open_date": "2026-11-17",
     "close_date": "2027-01-04",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (44d left)",
+    "deadline_status": "Open (43d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00477184"
   },
   {
@@ -370,7 +394,7 @@ window.GRANTS_DATA = [
     "open_date": "2026-11-01",
     "close_date": "2026-11-26",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Closing Soon (5d left)",
+    "deadline_status": "Closing Soon (4d left)",
     "url": "https://ausconnect.dfat.gov.au/opportunities?keyword=Rapid+Assessment+of+the+ICT",
     "summary": "DFAT AusConnect Request for Proposal to conduct a rapid assessment of the ICT ecosystem, covering digital infrastructure, systems review, information management, and digital transformation readiness."
   },
@@ -395,7 +419,8 @@ window.GRANTS_DATA = [
     "close_date": "TBD",
     "pipeline_stage": "1-Triage",
     "deadline_status": "Open (TBD)",
-    "url": "https://astnet.asean.org/2026/04/02/deadline-extended-call-for-applications-the-4th-china-asean-innovation-and-entrepreneurship-competition-caiec-2026/"
+    "url": "https://astnet.asean.org/2026/04/02/deadline-extended-call-for-applications-the-4th-china-asean-innovation-and-entrepreneurship-competition-caiec-2026/",
+    "summary": "The application deadline for the 4th China–ASEAN Innovation and Entrepreneurship Competition (CAIEC) 2026 has been extended! Do you have an AI-powered solution in industry, agriculture, healthcare, education, culture, finance, or \u0026#8230; [DEADLINE EXTENDED] Call for Applications…"
   },
   {
     "id": "bbfa749d24",
