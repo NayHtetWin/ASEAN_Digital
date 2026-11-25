@@ -1,5 +1,16 @@
 [
   {
+    "id": "f523108cba",
+    "type": "RFP/Tender",
+    "title": "RFQ/UNDP/ICT/3478585181/019/2026",
+    "source": "UNDP Procurement Notices",
+    "open_date": "2026-11-25",
+    "close_date": "TBD",
+    "pipeline_stage": "1-Triage",
+    "deadline_status": "Open (TBD)",
+    "url": "https://procurement-notices.undp.org/view_negotiation.cfm?nego_id=52049"
+  },
+  {
     "id": "c42948fbf8",
     "type": "RFP/Tender",
     "title": "Secretary-General of ASEAN Meets with President of the Federation of Pakistan Chambers of Commerce and Industry",
@@ -31,7 +42,7 @@
     "open_date": "2026-11-18",
     "close_date": "2026-11-30",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Closing Soon (6d left)",
+    "deadline_status": "Closing Soon (5d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00481308"
   },
   {
@@ -42,7 +53,7 @@
     "open_date": "2026-11-18",
     "close_date": "2026-11-30",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Closing Soon (6d left)",
+    "deadline_status": "Closing Soon (5d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00481306"
   },
   {
@@ -75,7 +86,7 @@
     "open_date": "2026-11-17",
     "close_date": "2026-12-03",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (9d left)",
+    "deadline_status": "Open (8d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00478592"
   },
   {
@@ -218,7 +229,7 @@
     "open_date": "2026-11-17",
     "close_date": "2026-12-10",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (16d left)",
+    "deadline_status": "Open (15d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00477720"
   },
   {
@@ -240,7 +251,7 @@
     "open_date": "2026-11-17",
     "close_date": "2027-01-04",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (41d left)",
+    "deadline_status": "Open (40d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00477184"
   },
   {
@@ -394,7 +405,7 @@
     "open_date": "2026-11-01",
     "close_date": "2026-11-26",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Closing Soon (2d left)",
+    "deadline_status": "Closing Soon (1d left)",
     "url": "https://ausconnect.dfat.gov.au/opportunities?keyword=Rapid+Assessment+of+the+ICT",
     "summary": "DFAT AusConnect Request for Proposal to conduct a rapid assessment of the ICT ecosystem, covering digital infrastructure, systems review, information management, and digital transformation readiness."
   },
