@@ -1,5 +1,28 @@
 window.GRANTS_DATA = [
   {
+    "id": "54a8c4184c",
+    "type": "Grant",
+    "title": "Request for Applications: Quantum-Safe Kickstarter Grant (Singapore)",
+    "source": "FundsforNGOs",
+    "open_date": "2026-11-27",
+    "close_date": "2027-10-31",
+    "pipeline_stage": "1-Triage",
+    "deadline_status": "Open (338d left)",
+    "url": "https://www2.fundsforngos.org/fellowships/request-for-applications-quantum-safe-kickstarter-grant-singapore/",
+    "summary": "The Quantum-Safe Kickstarter Grant, offered by the Cyber Security Agency of Singapore (CSA), aims to assist Singaporean organizations in initiating quantum-safe migration efforts. This grant encourages organizations to pilot and evaluate quantum-safe solutions, thereby strengthe…"
+  },
+  {
+    "id": "7dd363114b",
+    "type": "RFP/Tender",
+    "title": "To recruit the EFIT2 Coordinator to support Project Management",
+    "source": "World Bank Procurement Notices",
+    "open_date": "2026-11-27",
+    "close_date": "2026-12-18",
+    "pipeline_stage": "1-Triage",
+    "deadline_status": "Open (21d left)",
+    "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00483579"
+  },
+  {
     "id": "f523108cba",
     "type": "RFP/Tender",
     "title": "RFQ/UNDP/ICT/3478585181/019/2026",
@@ -42,7 +65,7 @@ window.GRANTS_DATA = [
     "open_date": "2026-11-18",
     "close_date": "2026-11-30",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Closing Soon (4d left)",
+    "deadline_status": "Closing Soon (3d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00481308"
   },
   {
@@ -53,7 +76,7 @@ window.GRANTS_DATA = [
     "open_date": "2026-11-18",
     "close_date": "2026-11-30",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Closing Soon (4d left)",
+    "deadline_status": "Closing Soon (3d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00481306"
   },
   {
@@ -86,7 +109,7 @@ window.GRANTS_DATA = [
     "open_date": "2026-11-17",
     "close_date": "2026-12-03",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Closing Soon (7d left)",
+    "deadline_status": "Closing Soon (6d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00478592"
   },
   {
@@ -229,7 +252,7 @@ window.GRANTS_DATA = [
     "open_date": "2026-11-17",
     "close_date": "2026-12-10",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (14d left)",
+    "deadline_status": "Open (13d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00477720"
   },
   {
@@ -251,7 +274,7 @@ window.GRANTS_DATA = [
     "open_date": "2026-11-17",
     "close_date": "2027-01-04",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (39d left)",
+    "deadline_status": "Open (38d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00477184"
   },
   {
@@ -404,8 +427,8 @@ window.GRANTS_DATA = [
     "source": "DFAT AusConnect",
     "open_date": "2026-11-01",
     "close_date": "2026-11-26",
-    "pipeline_stage": "1-Triage",
-    "deadline_status": "Closing Soon (0d left)",
+    "pipeline_stage": "6-Awarded/Expired",
+    "deadline_status": "Expired",
     "url": "https://ausconnect.dfat.gov.au/opportunities?keyword=Rapid+Assessment+of+the+ICT",
     "summary": "DFAT AusConnect Request for Proposal to conduct a rapid assessment of the ICT ecosystem, covering digital infrastructure, systems review, information management, and digital transformation readiness."
   },
