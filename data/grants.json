@@ -1,5 +1,16 @@
 [
   {
+    "id": "4869541679",
+    "type": "RFP/Tender",
+    "title": "Project Manager",
+    "source": "World Bank Procurement Notices",
+    "open_date": "2026-11-28",
+    "close_date": "2026-12-18",
+    "pipeline_stage": "1-Triage",
+    "deadline_status": "Open (20d left)",
+    "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00483578"
+  },
+  {
     "id": "54a8c4184c",
     "type": "Grant",
     "title": "Request for Applications: Quantum-Safe Kickstarter Grant (Singapore)",
@@ -7,7 +18,7 @@
     "open_date": "2026-11-27",
     "close_date": "2027-10-31",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (338d left)",
+    "deadline_status": "Open (337d left)",
     "url": "https://www2.fundsforngos.org/fellowships/request-for-applications-quantum-safe-kickstarter-grant-singapore/",
     "summary": "The Quantum-Safe Kickstarter Grant, offered by the Cyber Security Agency of Singapore (CSA), aims to assist Singaporean organizations in initiating quantum-safe migration efforts. This grant encourages organizations to pilot and evaluate quantum-safe solutions, thereby strengthe…"
   },
@@ -19,7 +30,7 @@
     "open_date": "2026-11-27",
     "close_date": "2026-12-18",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (21d left)",
+    "deadline_status": "Open (20d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00483579"
   },
   {
@@ -65,7 +76,7 @@
     "open_date": "2026-11-18",
     "close_date": "2026-11-30",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Closing Soon (3d left)",
+    "deadline_status": "Closing Soon (2d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00481308"
   },
   {
@@ -76,7 +87,7 @@
     "open_date": "2026-11-18",
     "close_date": "2026-11-30",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Closing Soon (3d left)",
+    "deadline_status": "Closing Soon (2d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00481306"
   },
   {
@@ -109,7 +120,7 @@
     "open_date": "2026-11-17",
     "close_date": "2026-12-03",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Closing Soon (6d left)",
+    "deadline_status": "Closing Soon (5d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00478592"
   },
   {
@@ -252,7 +263,7 @@
     "open_date": "2026-11-17",
     "close_date": "2026-12-10",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (13d left)",
+    "deadline_status": "Open (12d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00477720"
   },
   {
@@ -274,7 +285,7 @@
     "open_date": "2026-11-17",
     "close_date": "2027-01-04",
     "pipeline_stage": "1-Triage",
-    "deadline_status": "Open (38d left)",
+    "deadline_status": "Open (37d left)",
     "url": "https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00477184"
   },
   {
